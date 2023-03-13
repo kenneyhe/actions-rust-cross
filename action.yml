@@ -45,6 +45,7 @@ runs:
       if: ${{ steps.determine-cross-compile.outputs.needs-cross == 'true' && runner.os != 'Windows' }}
       env:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+        OPENSSL_DIR: ${{ inputs.env }}
     - name: Install cross if cross-compiling (Windows)
       shell: powershell
       run: install-cross-windows.ps1
@@ -60,6 +61,8 @@ runs:
       run: |
         ${{ steps.set-build-command.outputs.build-command }} build ${{ inputs.args }} --target ${{ inputs.target }}
       if: ${{ runner.os != 'Windows' }}
+      env:
+        OPENSSL_DIR: ${{ inputs.env }}
     # We want to run in Powershell on Windows to make sure we compile in a
     # native Windows environment. Some things won't compile properly under
     # msys, notably OpenSSL, which is compiled locally when using the
