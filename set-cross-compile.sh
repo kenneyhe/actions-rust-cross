@@ -4,7 +4,7 @@ set -x
 TARGET="$1"
 export PATH=.:$PATH
 export OPENSSL_DIR=/usr/include/openssl
-apt-get install libssl-dev -y || true
+sudo apt-get install libssl-dev -y || true
 # On macOS and Windows, we can cross-compile to all possible targets without
 # using cross.
 if uname -a | grep --quiet --extended-regexp -i "darwin|msys|windows"; then
