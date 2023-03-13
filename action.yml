@@ -1,5 +1,5 @@
 name: "Build Rust Projects with Cross"
-author: "Dave Rolsky <autarch@urth.org>"
+author: "Dave Rolsky <autarch@urth.org>, Kenney He <kenneyhe@gmail.com>"
 branding:
   icon: home
   color: gray-dark
@@ -21,6 +21,9 @@ inputs:
   strip:
     description: Strip the compiled binary
     default: false
+  env:
+    description: environment to pass in
+    required: false
 runs:
   using: composite
   steps:
