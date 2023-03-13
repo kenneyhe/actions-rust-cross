@@ -2,6 +2,8 @@ set -e
 set -x
 
 TARGET="$1"
+export PATH=.:$PATH
+export OPENSSL_DIR=/usr/include/openssl
 
 # On macOS and Windows, we can cross-compile to all possible targets without
 # using cross.
